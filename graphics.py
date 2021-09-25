@@ -6,11 +6,10 @@ from OpenGL.GLU import *
 
 import math
 
-
 verticies_2D = [
-    [-1, 1],
-    [1, 1],
-    [-1, -1]
+    [0, 0],
+    [0, 1],
+    [1, 0]
     ]
 
 edges_2D = [
@@ -62,6 +61,11 @@ def rotate(vertex, x):
         j = 0
         i += 1
 
+def sheer(vertex, x, y):
+    vertex[1][0] += x
+    vertex[2][1] += y
+
+
 def draw():
     glBegin(GL_LINES)
     for edge in edges_2D:
@@ -112,6 +116,18 @@ def main():
         if keys[pygame.K_DOWN]:
             translate(verticies_2D, 0, -0.1)
 
+        if keys[pygame.K_x]:
+            sheer(verticies_2D, 0.1, 0)
+
+        if keys[pygame.K_z]:
+            sheer(verticies_2D, -0.1, 0)
+
+        if keys[pygame.K_y]:
+            sheer(verticies_2D, 0, 0.1)
+
+        if keys[pygame.K_u]:
+            sheer(verticies_2D, 0, -0.1)
+
         #glRotatef(1, 3, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         draw()
@@ -121,5 +137,7 @@ def main():
 
 print("\nArrow Keys to move \n",
       "r and t to rotate\n",
-      "s and d to scale")
+      "s and d to scale\n",
+      "z and x to sheer along x\n",
+      "y and u to sheet along y")
 main()
