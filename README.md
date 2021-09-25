@@ -18,3 +18,5 @@ vertices_2d and edges_2d are the arrays which store vertex and array data
 This program only works with 2D triangles for now.
 
 The controls for all the commands are given in the python console as the program runs!
+
+Feel free to make any changes to the main game loop to try out other variables as I have hardcoded the change values for all functions...
